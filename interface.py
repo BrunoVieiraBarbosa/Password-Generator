@@ -19,7 +19,7 @@ class Interface():
 
 
     def layout(self):
-        #Espace
+        #Space
         tkinter.Frame(self.root, height=10).pack()
 
         #Frame options
