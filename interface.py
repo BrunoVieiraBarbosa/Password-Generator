@@ -1,10 +1,11 @@
 import tkinter, passwd, _thread
+import ttkbootstrap as ttk
 
 class Interface():
     def __init__(self, name, size):
         self.Generator = passwd.Password()
         self.size = size
-        self.root = tkinter.Tk()
+        self.root = ttk.Window(themename="superhero")
         self.root.title(name)
         self.winfo_screen = [self.root.winfo_screenwidth()//2, self.root.winfo_screenheight()//2]
         self.root.geometry(f'{size[0]}x{size[1]}+{self.winfo_screen[0]-size[0]//2}+{self.winfo_screen[1]-size[1]//2}')
@@ -37,6 +38,7 @@ class Interface():
 
         tkinter.Label(self.frame_options, text='Digits:').place(x=10, y=70)
         self.entry_digits = tkinter.Entry(self.frame_options, width=5)
+        self.entry_digits.insert(0, 8)
         self.entry_digits.place(x=65, y=70)
 
         self.button_generate = tkinter.Button(self.frame_options, text="Generate", command=lambda *args: self.generate((self.var_checkbox, self.entry_digits)))
@@ -54,7 +56,7 @@ class Interface():
         self.button_clean.bind("<Return>", lambda *args: self.listbox.delete(0, tkinter.END))
         self.button_clean.bind_all("<Alt-KeyPress-c>", lambda *args: self.listbox.delete(0, tkinter.END))
 
-        #Espace
+        #Space
         tkinter.Frame(self.root, height=10).pack()
 
         #Frame ListBox
